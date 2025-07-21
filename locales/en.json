@@ -1,10 +1,14 @@
 {
-	"nav": {
-		"home": "Home",
-		"hi": "Herbal Ingredients",
-		"hdl": "Hurt and Disease List",
-		"dds": "Detox drink and smoothie",
-		"lang": "မြန်မာ",
-		"dss": "nav.dss"
-	}
+  "nav": {
+    "home": "Home",
+    "hi": "Herbal Ingredients",
+    "hdl": "Hurt and Disease List",
+    "dds": "Detox drink and smoothie",
+    "lang": "မြန်မာ",
+    "aboutus": "About us"
+  },
+  "index": {
+    "useful": "Useful",
+    "popular": "Popular"
+  }
 }

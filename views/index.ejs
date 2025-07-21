@@ -11,14 +11,211 @@
   <body>
     <% include ./partial/navbar %>
     <div class="min-h-screen">
-      <div class="text-center text-lg"><%= __('nav.home') %></div>
-      <div class="swiper h-34">
+      <div class="swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">
+            <div class="w-full h-[30vh] lg:h-[80vh]">
+              <img src="/images/slider-1.jpg" class="w-full object-cover" />
+              <div
+                class="absolute top-1/2 left-5 lg:left-16 -translate-y-1/2 text-white space-y-4"
+              >
+                <h2 class="text-3xl lg:text-5xl font-bold drop-shadow-md">
+                  Test Title
+                </h2>
+                <p class="text-sm lg:text-lg max-w-md drop-shadow-md">
+                  Test Description
+                </p>
+                <a href="/" class="btn btn-primary">Check Somethings</a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="w-full h-[30vh] lg:h-[80vh]">
+              <img src="/images/slider-2.jpg" class="w-full object-cover" />
+              <div
+                class="absolute top-1/2 left-5 lg:left-16 -translate-y-1/2 text-white space-y-4"
+              >
+                <h2 class="text-3xl lg:text-5xl font-bold drop-shadow-md">
+                  Test Title
+                </h2>
+                <p class="text-sm lg:text-lg max-w-md drop-shadow-md">
+                  Test Description
+                </p>
+                <a href="/" class="btn btn-primary">Check Somethings</a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="w-full h-[30vh] lg:h-[80vh]">
+              <img src="/images/slider-3.jpg" class="w-full object-cover" />
+              <div
+                class="absolute top-1/2 left-5 lg:left-16 -translate-y-1/2 text-white space-y-4"
+              >
+                <h2 class="text-3xl lg:text-5xl font-bold drop-shadow-md">
+                  Test Title
+                </h2>
+                <p class="text-sm lg:text-lg max-w-md drop-shadow-md">
+                  Test Description
+                </p>
+                <a href="/" class="btn btn-primary">Check Somethings</a>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
+      </div>
+      <div class="text-center text-3xl my-9">Useful Herbal Ingredients</div>
+      <div class="m-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="text-center text-3xl my-9">
+        Popular Detox drink and smoothie
+      </div>
+      <div class="m-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-base-100 w-full shadow-sm">
+          <figure>
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              alt="Shoes"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Ingredients Name</h2>
+            <p>
+              A card component has a figure, a body part, and inside body there
+              are title and actions parts
+            </p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">See More</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <% include ./partial/footer %>
