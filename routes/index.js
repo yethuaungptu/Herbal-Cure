@@ -21,4 +21,8 @@ router.get("/dds", function (req, res, next) {
 router.get("/aboutus", function (req, res) {
   res.render("aboutus", { __: res.__ });
 });
+
+router.get("/login", function (req, res) {
+  res.render("login");
+});
 module.exports = router;

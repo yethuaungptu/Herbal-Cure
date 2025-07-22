@@ -9,7 +9,108 @@
   <body>
     <% include ./partial/navbar %>
     <div class="min-h-screen">
-      <div class="text-center text-lg"><%= __('nav.aboutus') %></div>
+      <section class="hero bg-base-100 py-10">
+        <div class="hero-content text-center max-w-4xl mx-auto flex-col">
+          <h1 class="text-4xl font-bold"><%= __('nav.aboutus') %></h1>
+          <p class="py-4 text-lg text-gray-500">
+            Herbal Cure is your go-to guide for healing with herbs and
+            ingredients right from your pantry. We blend ancient wisdom with
+            modern science to help you live better, naturally.
+          </p>
+        </div>
+      </section>
+
+      <!-- Our Story -->
+      <section class="px-4 md:px-10 lg:px-20 py-10 bg-base-200">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl font-semibold mb-4">Our Mission</h2>
+          <p class="text-gray-600">
+            We believe that nature has always provided the best remedies. Our
+            mission is to educate people about natural healing methods using
+            kitchen staples. Whether it's a sore throat or a sleepless night,
+            the right ingredient might just be on your shelf.
+          </p>
+        </div>
+      </section>
+
+      <!-- Developers Section -->
+      <section class="py-10 px-4 md:px-10 lg:px-20">
+        <div class="max-w-6xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-8">Meet the Developers</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
+            <!-- Developer Card -->
+            <div class="card bg-base-100 shadow-xl">
+              <figure>
+                <img
+                  src="/images/developer.jpg"
+                  alt="Developer 1"
+                  class="w-full h-64 object-cover"
+                />
+              </figure>
+              <div class="card-body items-center text-center">
+                <h3 class="card-title">Chue Khaing Khaing Tun</h3>
+                <p>Backend Developer(leader)</p>
+              </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+              <figure>
+                <img
+                  src="/images/developer.jpg"
+                  alt="Developer 1"
+                  class="w-full h-64 object-cover"
+                />
+              </figure>
+              <div class="card-body items-center text-center">
+                <h3 class="card-title">Khin Po Po Htut</h3>
+                <p>Frontend Developer(co-leader)</p>
+              </div>
+            </div>
+
+            <!-- Developer Card -->
+            <div class="card bg-base-100 shadow-xl">
+              <figure>
+                <img
+                  src="/images/developer.jpg"
+                  alt="Developer 1"
+                  class="w-full h-64 object-cover"
+                />
+              </figure>
+              <div class="card-body items-center text-center">
+                <h3 class="card-title">Nwe Nwe Aung</h3>
+                <p>Backend Developer</p>
+              </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+              <figure>
+                <img
+                  src="/images/developer.jpg"
+                  alt="Developer 1"
+                  class="w-full h-64 object-cover"
+                />
+              </figure>
+              <div class="card-body items-center text-center">
+                <h3 class="card-title">Cherry Lynn</h3>
+                <p>Frontend Developer</p>
+              </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl">
+              <figure>
+                <img
+                  src="/images/developer.jpg"
+                  alt="Developer 1"
+                  class="w-full h-64 object-cover"
+                />
+              </figure>
+              <div class="card-body items-center text-center">
+                <h3 class="card-title">May Zune Moe</h3>
+                <p>Data Analyst</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     <% include ./partial/footer %>
   </body>
