@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
 const i18n = require("i18n");
+var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var adminRouter = require("./routes/admin");
@@ -30,6 +31,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+mongoose.connect("mongodb://127.0.0.1/hcdb");
+const db = mongoose.connection;
+db.on("error", console.error.bind("mongodb connection error at hcdb"));
 
 app.use(
   session({
