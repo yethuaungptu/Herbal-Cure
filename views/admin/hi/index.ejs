@@ -38,6 +38,54 @@
           </div>
           <main class="flex-1 overflow-y-auto md:pt-4 pt-4 px-6 bg-base-200">
             <div class="text-3xl text-center my-3">Herbal Ingredients List</div>
+            <div class="card bg-base-100 shadow-xl">
+              <div class="overflow-x-auto">
+                <table class="table">
+                  <!-- head -->
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Category</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for(var i = 0;i < ingredients.length;i++){%>
+                    <tr>
+                      <td>
+                        <div class="flex items-center gap-3">
+                          <div class="avatar">
+                            <div class="mask mask-squircle h-12 w-12">
+                              <img
+                                src="<%= ingredients[i].image %>"
+                                alt="Avatar Tailwind CSS Component"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <div class="font-bold">
+                              <%= ingredients[i].nameEN %>
+                            </div>
+                            <div class="text-sm opacity-50">
+                              <%= ingredients[i].nameMM %>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td><%= ingredients[i].category %></td>
+                      <td>
+                        <a
+                          href="/admin/hi/detail/<%= ingredients[i]._id %>"
+                          class="btn btn-primary"
+                          >details</a
+                        >
+                      </td>
+                    </tr>
+                    <%}%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
             <div class="h-16"></div>
           </main>
         </div>

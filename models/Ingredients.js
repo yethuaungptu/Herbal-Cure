@@ -42,6 +42,10 @@ const IngredientsSchema = new Schema({
     type: String,
     required: true,
   },
+  isUseFul: {
+    type: Boolean,
+    default: false,
+  },
   created: {
     type: Date,
     default: Date.now(),

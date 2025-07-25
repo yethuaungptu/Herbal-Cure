@@ -37,4 +37,62 @@ router.post("/create", upload.single("image"), async function (req, res) {
   }
 });
 
+router.get("/detail/:id", async function (req, res) {
+  const ingredient = await Ingredient.findById(req.params.id);
+  res.render("admin/hi/detail", { __: res.__, ingredient: ingredient });
+});
+
+router.get("/edit/:id", async function (req, res) {
+  const ingredient = await Ingredient.findById(req.params.id);
+  res.render("admin/hi/edit", { __: res.__, ingredient: ingredient });
+});
+
+router.post("/edit", upload.single("image"), async function (req, res) {
+  try {
+    const ingredient = await Ingredient.findById(req.body.id);
+    const update = {
+      nameMM: req.body.nameMM,
+      nameEN: req.body.nameEN,
+      category: req.body.category,
+      benefitMM: req.body.benefitMM,
+      benefitEN: req.body.benefitEN,
+      sideEffectMM: req.body.sideEffectMM,
+      sideEffectEN: req.body.sideEffectEN,
+      descriptionMM: req.body.descriptionMM,
+      descriptionEN: req.body.descriptionEN,
+    };
+    if (req.file) {
+      try {
+        fs.unlinkSync("public" + ingredient.image);
+        update.image = "/images/uploads/" + req.file.filename;
+      } catch (e) {
+        console.log("Image error");
+      }
+    }
+    await Ingredient.findByIdAndUpdate(req.body.id, { $set: update });
+    res.redirect("/admin/hi");
+  } catch (e) {
+    console.error("Error updating tip:", e);
+    return;
+  }
+});
+
+router.post("/usefulFeature", async function (req, res) {
+  try {
+    if (req.body.action == "add") {
+      await Ingredient.findByIdAndUpdate(req.body.id, {
+        $set: { isUseFul: true },
+      });
+    } else {
+      await Ingredient.findByIdAndUpdate(req.body.id, {
+        $set: { isUseFul: false },
+      });
+    }
+    res.json({ status: "success" });
+  } catch (e) {
+    console.log(e);
+    res.json({ status: "error", message: "Somethings was wrong" });
+  }
+});
+
 module.exports = router;

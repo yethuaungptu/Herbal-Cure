@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Herbal Cure Admin</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="drawer lg:drawer-open">
+        <input id="left-sidebar-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+          <div class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
+            <div class="flex-1">
+              <label
+                for="left-sidebar-drawer"
+                class="btn btn-primary drawer-button lg:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  class="h-5 inline-block w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  ></path>
+                </svg>
+              </label>
+              <h1 class="text-2xl font-semibold ml-2"></h1>
+            </div>
+          </div>
+          <main class="flex-1 overflow-y-auto md:pt-4 pt-4 px-6 bg-base-200">
+            <div class="text-3xl text-center my-3">
+              Herbal Ingredients Edit
+            </div>
+            <div
+              class="card shadow-md mx-auto rounded-lg max-w-5xl bg-base-300"
+            >
+              <form
+                action="/admin/hi/edit"
+                method="post"
+                enctype="multipart/form-data"
+              >
+              <input type="hidden" name="id" value="<%= ingredient._id %>" />
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 p-3">
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Ingredient Name MM</legend>
+                    <input
+                      type="text"
+                      name="nameMM"
+                      class="input"
+                      value="<%= ingredient.nameMM %>"
+                      placeholder="Ingredient Name MM"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Ingredient Name EN</legend>
+                    <input
+                      type="text"
+                      name="nameEN"
+                      class="input"
+                      value="<%= ingredient.nameEN %>"
+                      placeholder="Ingredient Name EN"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Category</legend>
+                    <select class="select" name="category">
+                      <option value="Leafy Greens" <%= ingredient.category =="Leafy Greens"? "selected":"" %>>Leafy Greens</option>
+                      <option value="Root Vegetables" <%= ingredient.category =="Root Vegetables"? "selected":"" %>>Root Vegetables</option>
+                      <option value="Cruciferous Vegetables" <%= ingredient.category =="Cruciferous Vegetables"? "selected":"" %>>
+                        Cruciferous Vegetables
+                      </option>
+                      <option value="Fruit Vegetables" <%= ingredient.category =="Fruit Vegetables"? "selected":"" %>>Fruit Vegetables</option>
+                      <option value="Stem Vegetables" <%= ingredient.category =="Stem Vegetables"? "selected":"" %>>Stem Vegetables</option>
+                      <option value="Bulb Vegetables" <%= ingredient.category =="Bulb Vegetables"? "selected":"" %>>Bulb Vegetables</option>
+                      <option value="Tuber Vegetables" <%= ingredient.category =="Tuber Vegetables"? "selected":"" %>>Tuber Vegetables</option>
+                      <option value="Flower Vegetables" <%= ingredient.category =="Flower Vegetables"? "selected":"" %>>
+                        Flower Vegetables
+                      </option>
+                    </select>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Image</legend>
+                    <input type="file" name="image" class="file-input" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit MM</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="benefitMM"
+                      placeholder="Benefit MM"
+                    ><%= ingredient.benefitMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit EN</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="benefitEN"
+                      placeholder="Benefit EN"
+                    ><%= ingredient.benefitEN %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">SideEffect MM</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="sideEffectMM"
+                      placeholder="SideEffect MM"
+                    ><%= ingredient.sideEffectMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">SideEffect EN</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="sideEffectEN"
+                      placeholder="SideEffect EN"
+                    ><%= ingredient.sideEffectEN %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description MM</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionMM"
+                      placeholder="Description MM"
+                    ><%= ingredient.descriptionMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description EN</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionEN"
+                      placeholder="Description EN"
+                    ><%= ingredient.descriptionEN %></textarea>
+                  </fieldset>
+                  <div class="flex flex-col col-span-full">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="h-16"></div>
+          </main>
+        </div>
+        <% include ../../partial/adminDrawer %>
+      </div>
+    </div>
+  </body>
+</html>

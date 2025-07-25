@@ -1,9 +1,11 @@
 var express = require("express");
 var router = express.Router();
+var Ingredient = require("../models/Ingredients");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { __: res.__ });
+router.get("/", async function (req, res, next) {
+  const usefulIngredients = await Ingredient.find({ isUseFul: true });
+  res.render("index", { __: res.__, usefulIngredients: usefulIngredients });
 });
 
 router.get("/hi", function (req, res, next) {
