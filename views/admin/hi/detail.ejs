@@ -59,25 +59,25 @@
                   <div class="card bg-base-200 shadow-md">
                     <div class="card-body">
                       <div class="card-title">Benefit Myanmar</div>
-                      <p class="text-sm"><%= ingredient.benefitMM %></p>
+                      <p class="text-sm" id="benefitMM"></p>
                     </div>
                   </div>
                   <div class="card bg-base-200 shadow-md">
                     <div class="card-body">
                       <div class="card-title">Benefit English</div>
-                      <p class="text-sm"><%= ingredient.benefitEN %></p>
+                      <p class="text-sm" id="benefitEN"></p>
                     </div>
                   </div>
                   <div class="card bg-base-200 shadow-md">
                     <div class="card-body">
                       <div class="card-title">Side effect Myanmar</div>
-                      <p class="text-sm"><%= ingredient.sideEffectMM %></p>
+                      <p class="text-sm" id="sideEffectMM"></p>
                     </div>
                   </div>
                   <div class="card bg-base-200 shadow-md">
                     <div class="card-body">
                       <div class="card-title">Side effect English</div>
-                      <p class="text-sm"><%= ingredient.sideEffectEN %></p>
+                      <p class="text-sm" id="sideEffectEN"></p>
                     </div>
                   </div>
                   <div class="card bg-base-200 shadow-md">
@@ -123,6 +123,12 @@
   </body>
   <script src="/javascripts/jquery-3.7.1.min.js"></script>
   <script>
+    $(function () {
+      $("#benefitMM").html(`<%- ingredient.benefitMM %>`);
+      $("#benefitEN").html(`<%- ingredient.benefitEN %>`);
+      $("#sideEffectMM").html(`<%- ingredient.sideEffectMM %>`);
+      $("#sideEffectEN").html(`<%- ingredient.sideEffectEN %>`);
+    });
     function usefulFeature(action) {
       $.ajax({
         url: "/admin/hi/usefulFeature",

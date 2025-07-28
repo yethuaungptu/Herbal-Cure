@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Herbal Cure Admin</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="/stylesheets/quill.snow.css" rel="stylesheet" />
+    <script src="/javascripts/quill.js"></script>
   </head>
   <body>
     <div id="root">
@@ -91,35 +93,31 @@
                   </fieldset>
                   <fieldset class="fieldset lg:col-span-2">
                     <legend class="fieldset-legend">Benefit MM</legend>
-                    <textarea
-                      class="textarea h-24 w-full"
-                      name="benefitMM"
-                      placeholder="Benefit MM"
-                    ></textarea>
+                    <div id="benefitMMEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitMM" id="benefitMM" />
                   </fieldset>
                   <fieldset class="fieldset lg:col-span-2">
                     <legend class="fieldset-legend">Benefit EN</legend>
-                    <textarea
-                      class="textarea h-24 w-full"
-                      name="benefitEN"
-                      placeholder="Benefit EN"
-                    ></textarea>
+                    <div id="benefitENEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitEN" id="benefitEN" />
                   </fieldset>
                   <fieldset class="fieldset lg:col-span-2">
                     <legend class="fieldset-legend">SideEffect MM</legend>
-                    <textarea
-                      class="textarea h-24 w-full"
+                    <div id="sideEffectMMEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
                       name="sideEffectMM"
-                      placeholder="SideEffect MM"
-                    ></textarea>
+                      id="sideEffectMM"
+                    />
                   </fieldset>
                   <fieldset class="fieldset lg:col-span-2">
                     <legend class="fieldset-legend">SideEffect EN</legend>
-                    <textarea
-                      class="textarea h-24 w-full"
+                    <div id="sideEffectENEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
                       name="sideEffectEN"
-                      placeholder="SideEffect EN"
-                    ></textarea>
+                      id="sideEffectEN"
+                    />
                   </fieldset>
                   <fieldset class="fieldset lg:col-span-2">
                     <legend class="fieldset-legend">Description MM</legend>
@@ -151,4 +149,29 @@
       </div>
     </div>
   </body>
+  <script>
+    const quill1 = new Quill("#benefitMMEditor", {
+      theme: "snow",
+    });
+    const quill2 = new Quill("#benefitENEditor", {
+      theme: "snow",
+    });
+    const quill3 = new Quill("#sideEffectMMEditor", {
+      theme: "snow",
+    });
+    const quill4 = new Quill("#sideEffectENEditor", {
+      theme: "snow",
+    });
+    const form = document.querySelector("form");
+    const benefitMM = document.getElementById("benefitMM");
+    const benefitEN = document.getElementById("benefitEN");
+    const sideEffectMM = document.getElementById("sideEffectMM");
+    const sideEffectEN = document.getElementById("sideEffectEN");
+    form.addEventListener("submit", function (e) {
+      benefitMM.value = quill1.root.innerHTML;
+      benefitEN.value = quill2.root.innerHTML;
+      sideEffectMM.value = quill3.root.innerHTML;
+      sideEffectEN.value = quill4.root.innerHTML;
+    });
+  </script>
 </html>
