@@ -48,7 +48,11 @@ const HurtAndDiseaseSchema = new Schema({
     type: String,
     required: false,
   },
-  ageLevel: {
+  ageLevelMM: {
+    type: String,
+    required: false,
+  },
+  ageLevelEN: {
     type: String,
     required: false,
   },

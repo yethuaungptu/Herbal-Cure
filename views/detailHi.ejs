@@ -59,10 +59,10 @@
             />
             <div role="tabpanel" class="tab-content p-4">
               <h2 class="text-xl font-semibold mb-2">Benefits (English)</h2>
-              <p class="mb-4 text-gray-700"><%= ingredient.benefitEN %></p>
+              <p class="mb-4 text-gray-700" id="benefitEN"></p>
 
               <h2 class="text-xl font-semibold mb-2">Benefits (Myanmar)</h2>
-              <p class="text-gray-700"><%= ingredient.benefitMM %></p>
+              <p class="text-gray-700" id="benefitMM"></p>
             </div>
 
             <input
@@ -74,10 +74,10 @@
             />
             <div role="tabpanel" class="tab-content p-4">
               <h2 class="text-xl font-semibold mb-2">Side Effects (English)</h2>
-              <p class="mb-4 text-gray-700"><%= ingredient.sideEffectEN %></p>
+              <p class="mb-4 text-gray-700" id="sideEffectEN"></p>
 
               <h2 class="text-xl font-semibold mb-2">Side Effects (Myanmar)</h2>
-              <p class="text-gray-700"><%= ingredient.sideEffectMM %></p>
+              <p class="text-gray-700" id="sideEffectMM"></p>
             </div>
           </div>
         </div>
@@ -85,4 +85,13 @@
     </div>
     <% include ./partial/footer %>
   </body>
+  <script src="/javascripts/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function () {
+      $("#benefitMM").html(`<%- ingredient.benefitMM %>`);
+      $("#benefitEN").html(`<%- ingredient.benefitEN %>`);
+      $("#sideEffectMM").html(`<%- ingredient.sideEffectMM %>`);
+      $("#sideEffectEN").html(`<%- ingredient.sideEffectEN %>`);
+    });
+  </script>
 </html>
