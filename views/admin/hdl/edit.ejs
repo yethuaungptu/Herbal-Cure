@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Herbal Cure Admin</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="/stylesheets/quill.snow.css" rel="stylesheet" />
+    <script src="/javascripts/quill.js"></script>
   </head>
   <body>
     <div id="root">
@@ -37,7 +39,128 @@
             </div>
           </div>
           <main class="flex-1 overflow-y-auto md:pt-4 pt-4 px-6 bg-base-200">
-            <div class="text-center">HDL</div>
+            <div class="text-3xl text-center my-3">Hurt And Disease Edit</div>
+            <div
+              class="card shadow-md mx-auto rounded-lg max-w-5xl bg-base-300"
+            >
+              <form
+                action="/admin/hdl/edit"
+                method="post"
+                enctype="multipart/form-data"
+              >
+              <input type="hidden" name="id" value="<%= hd._id %>">
+              <input type="hidden" id="riVal" value="<%= hd.relatedIngredients %>">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 p-3">
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Name MM</legend>
+                    <input
+                      type="text"
+                      name="nameMM"
+                      class="input"
+                      value="<%= hd.nameMM %>"
+                      placeholder="Name MM"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Name EN</legend>
+                    <input
+                      type="text"
+                      name="nameEN"
+                      class="input"
+                      value="<%= hd.nameEN %>"
+                      placeholder="Name EN"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Category</legend>
+                    <select class="select" name="category">
+                      <option value="Hurt" <%= hd.category == "Hurt"? "selected":"" %> >Hurt</option>
+                      <option value="Disease" <%= hd.category == "Disease" ? "selected":"" %> >Disease</option>
+                    </select>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Image</legend>
+                    <input type="file" name="image" class="file-input" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Cause MM</legend>
+                    <div id="causeMMEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="causeMM" id="causeMM" value="<%= hd.causeMM %>" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Cause EN</legend>
+                    <div id="causeENEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="causeEN" id="causeEN" value="<%= hd.causeEN %>"/>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Treatment MM</legend>
+                    <div id="treatmentMMEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="treatmentMM" id="treatmentMM" value="<%= hd.treatmentMM %>" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Treatment EN</legend>
+                    <div id="treatmentENEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="treatmentEN" id="treatmentEN"  value="<%= hd.treatmentEN %>" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Ingredients</legend>
+                    <select
+                      class="select w-full h-full"
+                      name="relatedIngredients"
+                      multiple
+                      id="relatedIngredients"
+                    >
+                      <% for(var i = 0; i < ingredients.length;i++){%>
+                      <option value="<%= ingredients[i]._id %>">
+                        <%= ingredients[i].nameEN %>(<%= ingredients[i].nameMM
+                        %>)
+                      </option>
+                      <%}%>
+                    </select>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">
+                      Age Level Warning MM
+                    </legend>
+                    <textarea
+                      class="textarea h-24"
+                      name="ageLevelMM"
+                      placeholder="Age Level Warning MM"
+                    ><%= hd.ageLevelMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">
+                      Age Level Warning EN
+                    </legend>
+                    <textarea
+                      class="textarea h-24"
+                      name="ageLevelEN"
+                      placeholder="Age Level Warning EN"
+                    ><%= hd.ageLevelEN %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description MM</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionMM"
+                      placeholder="Description MM"
+                    ><%= hd.descriptionMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description EN</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionEN"
+                      placeholder="Description EN"
+                    ><%= hd.descriptionEN %></textarea>
+                  </fieldset>
+                  <div class="flex flex-col col-span-full">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
             <div class="h-16"></div>
           </main>
         </div>
@@ -45,4 +168,38 @@
       </div>
     </div>
   </body>
+   <script src="/javascripts/jquery-3.7.1.min.js"></script>
+  <script>
+    const quill1 = new Quill("#causeMMEditor", {
+      theme: "snow",
+    });
+    const quill2 = new Quill("#causeENEditor", {
+      theme: "snow",
+    });
+    const quill3 = new Quill("#treatmentMMEditor", {
+      theme: "snow",
+    });
+    const quill4 = new Quill("#treatmentENEditor", {
+      theme: "snow",
+    });
+    const form = document.querySelector("form");
+    const causeMM = document.getElementById("causeMM");
+    const causeEN = document.getElementById("causeEN");
+    const treatmentMM = document.getElementById("treatmentMM");
+    const treatmentEN = document.getElementById("treatmentEN");
+    form.addEventListener("submit", function (e) {
+      causeMM.value = quill1.root.innerHTML;
+      causeEN.value = quill2.root.innerHTML;
+      treatmentMM.value = quill3.root.innerHTML;
+      treatmentEN.value = quill4.root.innerHTML;
+    });
+
+    $(function(){
+      $("#relatedIngredients").val($("#riVal").val().split(","))
+        quill1.root.innerHTML = $("#causeMM").val();
+        quill2.root.innerHTML = $("#causeEN").val();
+        quill3.root.innerHTML = $("#treatmentMM").val();
+        quill4.root.innerHTML = $("#treatmentEN").val();
+    })
+  </script>
 </html>

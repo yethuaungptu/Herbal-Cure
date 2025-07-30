@@ -38,6 +38,10 @@ const HurtAndDiseaseSchema = new Schema({
     type: String,
     required: false,
   },
+  isPopular: {
+    type: Boolean,
+    default: false,
+  },
   relatedIngredients: [
     {
       type: Schema.Types.ObjectId,

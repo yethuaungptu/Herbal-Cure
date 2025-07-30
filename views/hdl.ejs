@@ -19,81 +19,28 @@
           aria-label="<%= __('hdl.hurt') %>"
         />
         <div class="tab-content bg-base-100 border-base-300 p-6">
+          <% if(hurtList.length == 0){%>
+          <div class="text-xl">No Hurt List available</div>
+          <%}%>
           <div
             class="mx-2 my-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
           >
+            <% for(var i = 0; i < hurtList.length; i++){%>
             <div class="card bg-base-100 w-full shadow-sm">
               <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
+                <img src="<%= hurtList[i].image %>" alt="Shoes" />
               </figure>
               <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
+                <h2 class="card-title"><%= hurtList[i].nameMM %></h2>
+                <p><%= hurtList[i].descriptionMM %></p>
                 <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
+                  <a href="/hdl/<%= hurtList[i]._id %>" class="btn btn-primary"
+                    >See More</a
+                  >
                 </div>
               </div>
             </div>
-            <div class="card bg-base-100 w-full shadow-sm">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100 w-full shadow-sm">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100 w-full shadow-sm">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
-                </div>
-              </div>
-            </div>
+            <%}%>
           </div>
         </div>
 
@@ -105,81 +52,30 @@
           checked="checked"
         />
         <div class="tab-content bg-base-100 border-base-300 p-6">
+          <% if(diseaseList.length == 0){%>
+          <div class="text-xl">No Disease List available</div>
+          <%}%>
           <div
             class="mx-2 my-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
           >
+            <% for(var i = 0; i < diseaseList.length; i++){%>
             <div class="card bg-base-100 w-full shadow-sm">
               <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
+                <img src="<%= diseaseList[i].image %>" alt="Shoes" />
               </figure>
               <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
+                <h2 class="card-title"><%= diseaseList[i].nameMM %></h2>
+                <p><%= diseaseList[i].descriptionMM %></p>
                 <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
+                  <a
+                    href="/hdl/<%= diseaseList[i]._id %>"
+                    class="btn btn-primary"
+                    >See More</a
+                  >
                 </div>
               </div>
             </div>
-            <div class="card bg-base-100 w-full shadow-sm">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100 w-full shadow-sm">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100 w-full shadow-sm">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Ingredients Name</h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-primary">See More</button>
-                </div>
-              </div>
-            </div>
+            <%}%>
           </div>
         </div>
       </div>
