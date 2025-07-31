@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const HurtAndDiseaseSchema = new Schema({
+const DetoxDrinkAndSmoothieSchema = new Schema({
   nameMM: {
     type: String,
     required: true,
@@ -18,23 +18,29 @@ const HurtAndDiseaseSchema = new Schema({
     type: String,
     required: true,
   },
-  category: {
+  benefitsMM: {
     type: String,
     required: true,
   },
-  causeMM: {
+  benefitsEN: {
     type: String,
-    required: false,
+    required: true,
   },
-  causeEN: {
+  ingredients: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Ingredients", // assuming you have an Ingredients model
+    },
+  ],
+  preparationMM: {
     type: String,
-    required: false,
+    required: true,
   },
-  treatmentMM: {
+  preparationEN: {
     type: String,
-    required: false,
+    required: true,
   },
-  treatmentEN: {
+  image: {
     type: String,
     required: false,
   },
@@ -42,23 +48,21 @@ const HurtAndDiseaseSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  relatedIngredients: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Ingredients",
-    },
-  ],
-  image: {
+  recommendedTimeMM: {
     type: String,
-    required: false,
+    required: true, // e.g., "မနက်ခင်း", "ညအိပ်ချိန်"
+  },
+  recommendedTimeEN: {
+    type: String,
+    required: true, // e.g., "Morning", "Before bed"
   },
   ageLevelMM: {
     type: String,
-    required: false,
+    required: true,
   },
   ageLevelEN: {
     type: String,
-    required: false,
+    required: true,
   },
   created: {
     type: Date,
@@ -70,4 +74,7 @@ const HurtAndDiseaseSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("HurtAndDisease", HurtAndDiseaseSchema);
+module.exports = mongoose.model(
+  "DetoxDrinkAndSmoothie",
+  DetoxDrinkAndSmoothieSchema
+);

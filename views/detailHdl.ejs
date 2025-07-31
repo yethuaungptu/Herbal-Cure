@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Herbal Cure</title>
+  </head>
+  <body>
+    <% include ./partial/navbar %>
+    <div class="min-h-screen">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 mt-3">
+        <!-- Image and Names -->
+        <div class="flex flex-col md:flex-row gap-6">
+          <img
+            src="<%= hd.image %>"
+            alt="Hurt and Disease Image"
+            class="w-full md:w-64 rounded-xl object-cover"
+          />
+
+          <div>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">
+              <%= hd.nameMM %> |
+              <span class="text-gray-500 text-xl"> <%= hd.nameEN %></span>
+            </h1>
+            <div class="badge badge-info text-white text-sm mt-2">
+              Category: <%= hd.category %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs for Description, Benefits, Side Effects -->
+        <div class="mt-10">
+          <div role="tablist" class="tabs tabs-bordered">
+            <input
+              type="radio"
+              name="tab"
+              role="tab"
+              class="tab"
+              aria-label="Description"
+              checked
+            />
+            <div role="tabpanel" class="tab-content p-4">
+              <h2 class="text-xl font-semibold mb-2">Description (English)</h2>
+              <p class="mb-4 text-gray-700"><%= hd.descriptionEN %></p>
+
+              <h2 class="text-xl font-semibold mb-2">Description (Myanmar)</h2>
+              <p class="text-gray-700"><%= hd.descriptionMM %></p>
+            </div>
+
+            <input
+              type="radio"
+              name="tab"
+              role="tab"
+              class="tab"
+              aria-label="Cause"
+            />
+            <div role="tabpanel" class="tab-content p-4">
+              <h2 class="text-xl font-semibold mb-2">Cause (English)</h2>
+              <p class="mb-4 text-gray-700" id="causeEN"></p>
+
+              <h2 class="text-xl font-semibold mb-2">Cause (Myanmar)</h2>
+              <p class="text-gray-700" id="causeMM"></p>
+            </div>
+
+            <input
+              type="radio"
+              name="tab"
+              role="tab"
+              class="tab"
+              aria-label="Treatments"
+            />
+            <div role="tabpanel" class="tab-content p-4">
+              <h2 class="text-xl font-semibold mb-2">Treatments (English)</h2>
+              <p class="mb-4 text-gray-700" id="treatmentEN"></p>
+
+              <h2 class="text-xl font-semibold mb-2">Treatment (Myanmar)</h2>
+              <p class="text-gray-700" id="treatmentMM"></p>
+            </div>
+            <input
+              type="radio"
+              name="tab"
+              role="tab"
+              class="tab"
+              aria-label="Age Level Warning"
+            />
+            <div role="tabpanel" class="tab-content p-4">
+              <h2 class="text-xl font-semibold mb-2">
+                Age Level Warning (English)
+              </h2>
+              <p class="mb-4 text-gray-700"><%= hd.ageLevelEN %></p>
+
+              <h2 class="text-xl font-semibold mb-2">
+                Age Level Warning (Myanmar)
+              </h2>
+              <p class="text-gray-700"><%= hd.ageLevelMM %></p>
+            </div>
+            <input
+              type="radio"
+              name="tab"
+              role="tab"
+              class="tab"
+              aria-label="Related Ingredients"
+            />
+            <div role="tabpanel" class="tab-content p-4">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                <% for(var i = 0; i < hd.relatedIngredients.length; i++){%>
+                <a
+                  class="card bg-base-200 shadow-md"
+                  href="/hi/<%= hd.relatedIngredients[i]._id %>"
+                >
+                  <div class="card-body">
+                    <div class="card-title">
+                      <%= hd.relatedIngredients[i].nameEN %>(<%=
+                      hd.relatedIngredients[i].nameMM %>)
+                    </div>
+                  </div>
+                </a>
+                <%}%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include ./partial/footer %>
+  </body>
+  <script src="/javascripts/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function () {
+      $("#causeMM").html(`<%- hd.causeMM %>`);
+      $("#causeEN").html(`<%- hd.causeEN %>`);
+      $("#treatmentMM").html(`<%- hd.treatmentMM %>`);
+      $("#treatmentEN").html(`<%- hd.treatmentEN %>`);
+    });
+  </script>
+</html>
