@@ -18,11 +18,15 @@ const DetoxDrinkAndSmoothieSchema = new Schema({
     type: String,
     required: true,
   },
-  benefitsMM: {
+  benefitMM: {
     type: String,
     required: true,
   },
-  benefitsEN: {
+  benefitEN: {
+    type: String,
+    required: true,
+  },
+  category: {
     type: String,
     required: true,
   },
