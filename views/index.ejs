@@ -120,78 +120,30 @@
         Popular Detox drink and smoothie
       </div>
       <div class="m-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <% for(var i = 0; i < popularDetoxDrinkAndSmoothie.length;i++){%>
         <div class="card bg-base-100 w-full shadow-sm">
           <figure>
             <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              src="<%= popularDetoxDrinkAndSmoothie[i].image %>"
+              class="rounded-xl w-full h-48 object-cover"
               alt="Shoes"
             />
           </figure>
           <div class="card-body">
-            <h2 class="card-title">Ingredients Name</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
+            <h2 class="card-title">
+              <%= popularDetoxDrinkAndSmoothie[i].nameMM %>
+            </h2>
+            <p><%= popularDetoxDrinkAndSmoothie[i].descriptionMM %></p>
             <div class="card-actions justify-end">
-              <button class="btn btn-primary">See More</button>
+              <a
+                href="/dds/<%= popularDetoxDrinkAndSmoothie[i]._id %>"
+                class="btn btn-primary"
+                >See More</a
+              >
             </div>
           </div>
         </div>
-        <div class="card bg-base-100 w-full shadow-sm">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">Ingredients Name</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary">See More</button>
-            </div>
-          </div>
-        </div>
-        <div class="card bg-base-100 w-full shadow-sm">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">Ingredients Name</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary">See More</button>
-            </div>
-          </div>
-        </div>
-        <div class="card bg-base-100 w-full shadow-sm">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">Ingredients Name</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary">See More</button>
-            </div>
-          </div>
-        </div>
+        <%}%>
       </div>
     </div>
     <% include ./partial/footer %>

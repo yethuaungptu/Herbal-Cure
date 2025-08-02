@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Herbal Cure Admin</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="/stylesheets/quill.snow.css" rel="stylesheet" />
+    <script src="/javascripts/quill.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div class="drawer lg:drawer-open">
+        <input id="left-sidebar-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+          <div class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
+            <div class="flex-1">
+              <label
+                for="left-sidebar-drawer"
+                class="btn btn-primary drawer-button lg:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  class="h-5 inline-block w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  ></path>
+                </svg>
+              </label>
+              <h1 class="text-2xl font-semibold ml-2"></h1>
+            </div>
+          </div>
+          <main class="flex-1 overflow-y-auto md:pt-4 pt-4 px-6 bg-base-200">
+            <div class="text-3xl text-center my-3">
+              Detox Drink And Smoothie Edit
+            </div>
+            <div
+              class="card shadow-md mx-auto rounded-lg max-w-5xl bg-base-300"
+            >
+              <form
+                action="/admin/dds/edit"
+                method="post"
+                enctype="multipart/form-data"
+              >
+              <input type="hidden" name="id" value="<%= dds._id %>">
+              <input type="hidden" id="ingredientVal"  value="<%= dds.ingredients %>">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 p-3">
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Name MM</legend>
+                    <input
+                      type="text"
+                      name="nameMM"
+                      class="input"
+                      value="<%= dds.nameMM %>"
+                      placeholder="Name MM"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Name EN</legend>
+                    <input
+                      type="text"
+                      name="nameEN"
+                      class="input"
+                      value="<%= dds.nameEN %>"
+                      placeholder="Name EN"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Category</legend>
+                    <select class="select" name="category">
+                      <option disabled selected>Pick a Category</option>
+                      <option value="Detox Drink" <%= dds.category == "Detox Drink"? "selected":"" %>>Detox Drink</option>
+                      <option value="Smoothie" <%= dds.category == "Smoothie"? "selected":"" %>>Smoothie</option>
+                    </select>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Image</legend>
+                    <input type="file" name="image" class="file-input" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">RecommendedTime MM</legend>
+                    <input
+                      type="text"
+                      name="recommendedTimeMM"
+                      class="input w-full"
+                      value="<%= dds.recommendedTimeMM %>"
+                      placeholder="RecommendedTime MM"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">RecommendedTime EN</legend>
+                    <input
+                      type="text"
+                      name="recommendedTimeEN"
+                      class="input w-full"
+                      value="<%= dds.recommendedTimeEN %>"
+                      placeholder="RecommendedTime EN"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit MM</legend>
+                    <div id="benefitMMEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitMM" id="benefitMM" value="<%= dds.benefitMM %>" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit EN</legend>
+                    <div id="benefitENEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitEN" id="benefitEN" value="<%= dds.benefitEN %>" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Preparation MM</legend>
+                    <div id="preparationMMEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
+                      name="preparationMM"
+                      id="preparationMM"
+                      value="<%= dds.preparationMM %>"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Preparation EN</legend>
+                    <div id="preparationENEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
+                      name="preparationEN"
+                      id="preparationEN"
+                      value="<%= dds.preparationMM %>"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Ingredients</legend>
+                    <select
+                      class="select w-full h-full"
+                      name="ingredients"
+                      id="ingredients"
+                      multiple
+                    >
+                      <% for(var i = 0; i < ingredients.length;i++){%>
+                      <option value="<%= ingredients[i]._id %>">
+                        <%= ingredients[i].nameEN %>(<%= ingredients[i].nameMM
+                        %>)
+                      </option>
+                      <%}%>
+                    </select>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">
+                      Age Level Warning MM
+                    </legend>
+                    <textarea
+                      class="textarea h-24"
+                      name="ageLevelMM"
+                      placeholder="Age Level Warning MM"
+                    ><%= dds.ageLevelMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">
+                      Age Level Warning EN
+                    </legend>
+                    <textarea
+                      class="textarea h-24"
+                      name="ageLevelEN"
+                      placeholder="Age Level Warning EN"
+                    ><%= dds.ageLevelEN %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description MM</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionMM"
+                      placeholder="Description MM"
+                    ><%= dds.descriptionMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description EN</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionEN"
+                      placeholder="Description EN"
+                    ><%= dds.descriptionEN %></textarea>
+                  </fieldset>
+                  <div class="flex flex-col col-span-full">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="h-16"></div>
+          </main>
+        </div>
+        <% include ../../partial/adminDrawer %>
+      </div>
+    </div>
+  </body>
+  <script src="/javascripts/jquery-3.7.1.min.js"></script>
+  <script>
+    const quill1 = new Quill("#benefitMMEditor", {
+      theme: "snow",
+    });
+    const quill2 = new Quill("#benefitENEditor", {
+      theme: "snow",
+    });
+    const quill3 = new Quill("#preparationMMEditor", {
+      theme: "snow",
+    });
+    const quill4 = new Quill("#preparationENEditor", {
+      theme: "snow",
+    });
+    const form = document.querySelector("form");
+    const benefitMM = document.getElementById("benefitMM");
+    const benefitEN = document.getElementById("benefitEN");
+    const preparationMM = document.getElementById("preparationMM");
+    const preparationEN = document.getElementById("preparationEN");
+    form.addEventListener("submit", function (e) {
+      benefitMM.value = quill1.root.innerHTML;
+      benefitEN.value = quill2.root.innerHTML;
+      preparationMM.value = quill3.root.innerHTML;
+      preparationEN.value = quill4.root.innerHTML;
+    });
+    $(function(){
+      $("#ingredients").val($("#ingredientVal").val().split(","))
+        quill1.root.innerHTML = $("#benefitMM").val();
+        quill2.root.innerHTML = $("#benefitEN").val();
+        quill3.root.innerHTML = $("#preparationMM").val();
+        quill4.root.innerHTML = $("#preparationEN").val();
+    })
+  </script>
+</html>

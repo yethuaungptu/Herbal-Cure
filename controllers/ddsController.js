@@ -42,4 +42,76 @@ router.post("/create", upload.single("image"), async function (req, res) {
   }
 });
 
+router.get("/detail/:id", async function (req, res) {
+  const dds = await DetoxDrinkAndSmoothie.findById(req.params.id).populate(
+    "ingredients"
+  );
+  res.render("admin/dds/detail", { __: res.__, dds: dds });
+});
+
+router.get("/edit/:id", async function (req, res) {
+  const dds = await DetoxDrinkAndSmoothie.findById(req.params.id);
+  const ingredients = await Ingredients.find();
+  res.render("admin/dds/edit", {
+    __: res.__,
+    dds: dds,
+    ingredients: ingredients,
+  });
+});
+
+router.post("/popularFeature", async function (req, res) {
+  try {
+    if (req.body.action == "add") {
+      await DetoxDrinkAndSmoothie.findByIdAndUpdate(req.body.id, {
+        $set: { isPopular: true },
+      });
+    } else {
+      await DetoxDrinkAndSmoothie.findByIdAndUpdate(req.body.id, {
+        $set: { isPopular: false },
+      });
+    }
+    res.json({ status: "success" });
+  } catch (e) {
+    console.log(e);
+    res.json({ status: "error", message: "Somethings was wrong" });
+  }
+});
+
+router.post("/edit", upload.single("image"), async function (req, res) {
+  try {
+    const dds = await DetoxDrinkAndSmoothie.findById(req.body.id);
+    const update = {
+      nameMM: req.body.nameMM,
+      nameEN: req.body.nameEN,
+      category: req.body.category,
+      benefitMM: req.body.benefitMM,
+      benefitEN: req.body.benefitEN,
+      preparationMM: req.body.preparationMM,
+      preparationEN: req.body.preparationEN,
+      descriptionMM: req.body.descriptionMM,
+      descriptionEN: req.body.descriptionEN,
+      ageLevelMM: req.body.ageLevelMM,
+      ageLevelEN: req.body.ageLevelEN,
+      ingredients: req.body.ingredients,
+      recommendedTimeMM: req.body.recommendedTimeMM,
+      recommendedTimeEN: req.body.recommendedTimeEN,
+    };
+    if (req.file) {
+      try {
+        if (dds.image) fs.unlinkSync("public" + dds.image);
+        update.image = "/images/uploads/" + req.file.filename;
+      } catch (e) {
+        console.log("Image error");
+      }
+    }
+    await DetoxDrinkAndSmoothie.findByIdAndUpdate(req.body.id, {
+      $set: update,
+    });
+    res.redirect("/admin/dds");
+  } catch (e) {
+    console.log(e);
+    res.redirect("/admin/dds/edit/" + req.body.id);
+  }
+});
+
 module.exports = router;

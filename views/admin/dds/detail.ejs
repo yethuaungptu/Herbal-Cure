@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Herbal Cure Admin</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="drawer lg:drawer-open">
+        <input id="left-sidebar-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+          <div class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
+            <div class="flex-1">
+              <label
+                for="left-sidebar-drawer"
+                class="btn btn-primary drawer-button lg:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  class="h-5 inline-block w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  ></path>
+                </svg>
+              </label>
+              <h1 class="text-2xl font-semibold ml-2"></h1>
+            </div>
+          </div>
+          <main class="flex-1 overflow-y-auto md:pt-4 pt-4 px-6 bg-base-200">
+            <div class="text-3xl text-center my-3">
+              Detox Drink And Smoothie Detail
+            </div>
+            <div class="card shadow-xl bg-base-100">
+              <div class="card-body">
+                <h2 class="card-title"><%= dds.nameEN %>(<%= dds.nameMM %>)</h2>
+                <h2 class="card-title text-sm text-blue-500">
+                  <%= dds.category %>
+                </h2>
+                <figure class="px-2 lg:px-10 pt-5">
+                  <img
+                    src="<%= dds.image %>"
+                    alt="Image"
+                    class="rounded-xl w-full h-96 object-cover"
+                  />
+                </figure>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Benefit Myanmar</div>
+                      <p class="text-sm" id="benefitMM"></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Benefit English</div>
+                      <p class="text-sm" id="benefitEN"></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Preparation Myanmar</div>
+                      <p class="text-sm" id="preparationMM"></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Preparation English</div>
+                      <p class="text-sm" id="preparationEN"></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Age Level Warning Myanmar</div>
+                      <p class="text-sm"><%= dds.ageLevelMM %></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Age Level Warning English</div>
+                      <p class="text-sm"><%= dds.ageLevelEN %></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Recommended Time Myanmar</div>
+                      <p class="text-sm"><%= dds.recommendedTimeMM %></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Recommended Time English</div>
+                      <p class="text-sm"><%= dds.recommendedTimeEN %></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Description Myanmar</div>
+                      <p class="text-sm"><%= dds.descriptionMM %></p>
+                    </div>
+                  </div>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">Description English</div>
+                      <p class="text-sm"><%= dds.descriptionEN %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-2xl">Ingredients</div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                  <% for(var i = 0; i < dds.ingredients.length; i++){%>
+                  <div class="card bg-base-200 shadow-md">
+                    <div class="card-body">
+                      <div class="card-title">
+                        <%= dds.ingredients[i].nameEN %>(<%=
+                        dds.ingredients[i].nameMM %>)
+                      </div>
+                    </div>
+                  </div>
+                  <%}%>
+                </div>
+                <div class="card-action flex justify-end">
+                  <% if (dds.isPopular) { %>
+                  <button
+                    class="btn btn-error"
+                    onclick="popularFeature('remove')"
+                  >
+                    Remove as popular
+                  </button>
+                  <% } else { %>
+                  <button
+                    class="btn btn-accent"
+                    onclick="popularFeature('add')"
+                  >
+                    Set as popular
+                  </button>
+                  <% } %>
+                  <a
+                    href="/admin/dds/edit/<%= dds._id %>"
+                    class="btn btn-primary mx-1"
+                    >Edit</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="h-16"></div>
+          </main>
+        </div>
+        <% include ../../partial/adminDrawer %>
+      </div>
+    </div>
+  </body>
+  <script src="/javascripts/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function () {
+      $("#benefitMM").html(`<%- dds.benefitMM %>`);
+      $("#benefitEN").html(`<%- dds.benefitEN %>`);
+      $("#preparationMM").html(`<%- dds.preparationMM %>`);
+      $("#preparationEN").html(`<%- dds.preparationEN %>`);
+    });
+    function popularFeature(action) {
+      $.ajax({
+        url: "/admin/dds/popularFeature",
+        type: "POST",
+        data: {
+          id: "<%= dds._id %>",
+          action: action,
+        },
+        success: function (response) {
+          if (response.status === "success") {
+            location.reload();
+          } else {
+            alert("Error complete task");
+          }
+        },
+        error: function () {
+          alert("Error connecting to the server.");
+        },
+      });
+    }
+  </script>
+</html>

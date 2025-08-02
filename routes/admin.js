@@ -5,12 +5,24 @@ var hdlController = require("../controllers/hdlController");
 var ddsController = require("../controllers/ddsController");
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
+const checkAuth = (req, res, next) => {
+  if (req.session.admin) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+};
+router.get("/", checkAuth, function (req, res, next) {
   res.render("admin/index", { __: res.__ });
 });
 
-router.use("/hi", hiController);
-router.use("/hdl", hdlController);
-router.use("/dds", ddsController);
+router.get("/logout", checkAuth, function (req, res) {
+  req.session.destroy();
+  res.redirect("/");
+});
+
+router.use("/hi", checkAuth, hiController);
+router.use("/hdl", checkAuth, hdlController);
+router.use("/dds", checkAuth, ddsController);
 
 module.exports = router;
