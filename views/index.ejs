@@ -16,7 +16,7 @@
           <div class="swiper-slide">
             <div class="w-full h-[30vh] lg:h-[80vh]">
               <img src="/images/slider-1.jpg" class="w-full object-cover" />
-              <div
+              <!-- <div
                 class="absolute top-1/2 left-5 lg:left-16 -translate-y-1/2 text-white space-y-4"
               >
                 <h2 class="text-3xl lg:text-5xl font-bold drop-shadow-md">
@@ -26,13 +26,13 @@
                   Test Description
                 </p>
                 <a href="/" class="btn btn-primary">Check Somethings</a>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="swiper-slide">
             <div class="w-full h-[30vh] lg:h-[80vh]">
               <img src="/images/slider-2.jpg" class="w-full object-cover" />
-              <div
+              <!-- <div
                 class="absolute top-1/2 left-5 lg:left-16 -translate-y-1/2 text-white space-y-4"
               >
                 <h2 class="text-3xl lg:text-5xl font-bold drop-shadow-md">
@@ -42,13 +42,13 @@
                   Test Description
                 </p>
                 <a href="/" class="btn btn-primary">Check Somethings</a>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="swiper-slide">
             <div class="w-full h-[30vh] lg:h-[80vh]">
               <img src="/images/slider-3.jpg" class="w-full object-cover" />
-              <div
+              <!-- <div
                 class="absolute top-1/2 left-5 lg:left-16 -translate-y-1/2 text-white space-y-4"
               >
                 <h2 class="text-3xl lg:text-5xl font-bold drop-shadow-md">
@@ -58,7 +58,7 @@
                   Test Description
                 </p>
                 <a href="/" class="btn btn-primary">Check Somethings</a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -77,7 +77,9 @@
           </figure>
           <div class="card-body">
             <h2 class="card-title"><%= usefulIngredients[i].nameMM %></h2>
-            <p><%= usefulIngredients[i].descriptionMM %></p>
+            <p class="line-clamp-3">
+              <%= usefulIngredients[i].descriptionMM %>
+            </p>
             <div class="card-actions justify-end">
               <a
                 class="btn btn-primary"
@@ -103,7 +105,9 @@
           </figure>
           <div class="card-body">
             <h2 class="card-title"><%= featuredHurtAndDisease[i].nameMM %></h2>
-            <p><%= featuredHurtAndDisease[i].descriptionMM %></p>
+            <p class="line-clamp-3">
+              <%= featuredHurtAndDisease[i].descriptionMM %>
+            </p>
             <div class="card-actions justify-end">
               <a
                 class="btn btn-primary"
@@ -133,7 +137,9 @@
             <h2 class="card-title">
               <%= popularDetoxDrinkAndSmoothie[i].nameMM %>
             </h2>
-            <p><%= popularDetoxDrinkAndSmoothie[i].descriptionMM %></p>
+            <p class="line-clamp-3">
+              <%= popularDetoxDrinkAndSmoothie[i].descriptionMM %>
+            </p>
             <div class="card-actions justify-end">
               <a
                 href="/dds/<%= popularDetoxDrinkAndSmoothie[i]._id %>"
