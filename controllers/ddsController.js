@@ -97,9 +97,12 @@ router.post("/edit", upload.single("image"), async function (req, res) {
       recommendedTimeEN: req.body.recommendedTimeEN,
     };
     if (req.file) {
+      update.image = "/images/uploads/" + req.file.filename;
       try {
-        if (dds.image) fs.unlinkSync("public" + dds.image);
-        update.image = "/images/uploads/" + req.file.filename;
+        if (dds.image) {
+          await fs.access("public" + dds.image);
+          fs.unlinkSync("public" + dds.image);
+        }
       } catch (e) {
         console.log("Image error");
       }

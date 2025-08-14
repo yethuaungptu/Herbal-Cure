@@ -72,9 +72,12 @@ router.post("/edit", upload.single("image"), async function (req, res) {
       relatedIngredients: req.body.relatedIngredients,
     };
     if (req.file) {
+      update.image = "/images/uploads/" + req.file.filename;
       try {
-        if (hd.image) fs.unlinkSync("public" + hd.image);
-        update.image = "/images/uploads/" + req.file.filename;
+        if (hd.image) {
+          await fs.access("public" + hd.image);
+          fs.unlinkSync("public" + hd.image);
+        }
       } catch (e) {
         console.log("Image error");
       }
